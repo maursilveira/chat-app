@@ -1,0 +1,30 @@
+{
+  "name": "chat-app",
+  "version": "1.0.0",
+  "description": "A chat app for Multimedia Authoring 3 Homework 2",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/maursilveira/chat-app.git"
+  },
+  "keywords": [
+    "chat",
+    "node.js",
+    "node",
+    "socket",
+    "socket.io"
+  ],
+  "author": "Mauricio M. Silveira",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/maursilveira/chat-app/issues"
+  },
+  "homepage": "https://github.com/maursilveira/chat-app#readme",
+  "devDependencies": {
+    "express": "^4.16.2",
+    "grunt": "^1.0.1"
+  }
+}
