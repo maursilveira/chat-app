@@ -23,8 +23,21 @@
     "url": "https://github.com/maursilveira/chat-app/issues"
   },
   "homepage": "https://github.com/maursilveira/chat-app#readme",
-  "devDependencies": {
+  "dependencies": {
     "express": "^4.16.2",
-    "grunt": "^1.0.1"
+    "socket.io": "^2.0.4"
+  },
+  "devDependencies": {
+    "autoprefixer": "^7.2.5",
+    "babel-core": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "cssnano": "^3.10.0",
+    "grunt": "^1.0.1",
+    "grunt-babel": "^7.0.0",
+    "grunt-contrib-concat": "^1.0.1",
+    "grunt-contrib-sass": "^1.0.0",
+    "grunt-contrib-watch": "^1.0.0",
+    "grunt-postcss": "^0.9.0",
+    "pixrem": "^4.0.1"
   }
 }
