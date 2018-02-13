@@ -2,6 +2,12 @@
 
 This is a chat app built using Socket.io and to run in NodeJS.
 
+## Features
+* Lightbox on load to set nickname  
+* Different message when a user enters or leaves the chat  
+* Display "<username> is typing" functionality  
+* Night Mode (on right bottom icon)  
+
 ## Getting Started
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
@@ -33,7 +39,7 @@ grunt
 This project is built to run in NodeJS, therefore it is necessary to execute this command in the root directory of your local repository of the project:
 
 ```
-node app
+npm start
 ```
 
 ## License
