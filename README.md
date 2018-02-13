@@ -7,6 +7,7 @@ This is a chat app built using Socket.io and to run in NodeJS.
 * Different message when a user enters or leaves the chat  
 * Display message time  
 * Display "<username> is typing" functionality  
+* Auto scroll down of chat container  
 * Night Mode (on right bottom icon)  
 
 ## Getting Started
