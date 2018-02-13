@@ -8,7 +8,9 @@
       nameInput = document.querySelector('.nickname'),
       chatMessage = document.querySelector('.message'),
       typingMessage = document.querySelector('.typing'),
-      nickname = null;
+      icon = document.querySelector('#small-icon'),
+      nickname = null,
+      overBtn = false;
 
   // avoid undesired resubmissions of form when reload page
   function addNicknameHandler() {
@@ -30,7 +32,6 @@
 
   // fire on typing and send message with user's nickname
   function isTyping(e) {
-    console.log('from isTyping');
     msg = `${nickname} is typing`;
     socket.emit('typing message', msg);
     // set timeout to erase 'is typing' message
@@ -72,10 +73,55 @@
     }
   }
 
+  // show night mode button
+  function showNightOption() {
+    let nightBtn = document.querySelector('#night-button');
+    nightBtn.style.display = "block";
+    icon.addEventListener('mouseout', timeoutNight, false);
+    nightBtn.addEventListener('mouseover', () => {overBtn = true;}, false);
+    nightBtn.addEventListener('mouseout', () => { overBtn = false; timeoutNight();}, false);
+    nightBtn.addEventListener('click', toggleNightMode, false);
+  }
+
+  // set timeout to hide night mode button
+  function timeoutNight() {
+    timeout = setTimeout(hideNightOption, 2000);
+  }
+
+  // hide night mode button
+  function hideNightOption() {
+    if(!overBtn) {
+      let nightBtn = document.querySelector('#night-button');
+      nightBtn.style.display = "none";
+      icon.removeEventListener('mouseout', timeoutNight, false);
+      nightBtn.removeEventListener('click', toggleNightMode, false);
+    }
+  }
+
+  // toggle interface from normal to night mode
+  function toggleNightMode(evt) {
+    evt.preventDefault();
+    let container = document.querySelector('#container');
+    let bodyarea = document.querySelector('body');
+    if(evt.currentTarget.classList.contains('night-on')) {
+      evt.currentTarget.classList.remove('night-on');
+      container.classList.remove('night');
+      bodyarea.style.backgroundImage = 'url(../images/background.jpg)';
+      evt.currentTarget.innerHTML = "Night Mode OFF";
+    }
+    else {
+      evt.currentTarget.classList.add('night-on');
+      container.classList.add('night');
+      bodyarea.style.backgroundImage = 'url(../images/background-night.jpg)';
+      evt.currentTarget.innerHTML = "Night Mode ON";
+    }
+  }
+
   window.addEventListener('load', addNicknameHandler, false);
   socket.addEventListener('chat message', appendMessage, false);
   socket.addEventListener('connect message', appendInOutMessage, false);
   socket.addEventListener('disconnect message', appendInOutMessage, false);
   socket.addEventListener('typing message', writeTyping, false);
+  icon.addEventListener('mouseover', showNightOption, false);
 
 })();
