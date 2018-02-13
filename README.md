@@ -5,6 +5,7 @@ This is a chat app built using Socket.io and to run in NodeJS.
 ## Features
 * Lightbox on load to set nickname  
 * Different message when a user enters or leaves the chat  
+* Display message time  
 * Display "<username> is typing" functionality  
 * Night Mode (on right bottom icon)  
 
