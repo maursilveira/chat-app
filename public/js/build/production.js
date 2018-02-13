@@ -1,7 +1,7 @@
 (() => {
   const socket = io();
 
-  let messageList = document.querySelector('ul'),
+  let messageList = document.querySelector('#chat-area'),
       chatForm = document.querySelector('#typing-box'),
       lightbox = document.querySelector('#lightbox'),
       nicknameForm = lightbox.querySelector('#nickname-form'),
@@ -52,12 +52,14 @@
   function appendMessage(msg) {
     let newMsg = `<li><p>${msg.message}</p></li>`;
     messageList.innerHTML += newMsg;
+    messageList.scrollTop = messageList.scrollHeight;
   }
 
   // append 'has entered' and 'has left' messages
   function appendInOutMessage(msg) {
     let newMsg = `<li class="in-out"><p>${msg.message}</p></li>`;
     messageList.innerHTML += newMsg;
+    messageList.scrollTop = messageList.scrollHeight;
   }
 
   // set message to be sent and emit it

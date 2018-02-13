@@ -71,17 +71,19 @@ body {
   margin: 0 auto;
   max-width: 800px;
   min-width: 320px;
-	overflow: hidden;
+	// overflow-y: scroll;
   background-color: rgba(255, 255, 255, 0.95);
   color: #000000;
   border-radius: 6px;
   position: relative;
 
-  #messages {
+  #chat-area {
 		list-style-type: none;
+    height: 90%;
     margin: 0;
     padding: 0;
     font-size: 14px;
+    overflow-y: scroll;
 
 		li {
 			padding: 5px 10px;
@@ -185,7 +187,7 @@ body {
   background-color: rgba(0, 0, 0, 0.8);
   color: #ffffff;
 
-  #messages {
+  #chat-area {
     li.in-out {
       p {
         background-color: #315d7c;
