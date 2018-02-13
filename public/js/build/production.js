@@ -66,11 +66,23 @@
     // check if message is not empty
     if(chatMessage.value) {
       nickname = (nickname && nickname.length > 0) ? nickname : 'user';
-      msg = `<span>${nickname}</span>: ${chatMessage.value}`;
+      let time = new Date();
+      let curTime = convertTime(time);
+      msg = `<time>(${curTime})</time> <span>${nickname}</span>: ${chatMessage.value}`;
       socket.emit('chat message', msg);
       chatMessage.value = '';
       return false;
     }
+  }
+
+  // convert time from timestamp to date format
+  function convertTime(t) {
+    let h = '0' + t.getHours();
+    let m = '0' + t.getMinutes();
+    let s = '0' + t.getSeconds();
+
+    let convertedTime = h.slice(-2) + ':' + m.slice(-2) + ':' + s.slice(-2);
+    return convertedTime;
   }
 
   // show night mode button
