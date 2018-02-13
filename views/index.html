@@ -2,23 +2,29 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Socket IO Chat with Node!</title>
+	<title>Chat.you!</title>
 	<link rel="stylesheet" href="css/main.css">
 </head>
 <body>
+	<h1 class="hidden">Chat Application</h1>
 	<div id="lightbox">
 		<form id="nickname-form">
-			<input class="nickname" type="text" placeholder="What is your nickname?">
+			<!-- <h2 class="hidden">Nickname Form</h2> -->
+			<p class="title">Welcome to Chat.you!</p>
+			<img src="images/chat-icon.png" alt="Chat baloons">
+			<input class="nickname" type="text" placeholder="What is your nickname?" autofocus>
 			<input class="submit-btn" type="submit" name="submit" value="Let me in!">
 			<!-- <button class="submit-btn">Let me in!</button> -->
 		</form>
 	</div>
-
-	<ul id="messages"></ul>
-	<form id="typing-box">
-		<input class="message" type="text" id="m" autocomplete="off">
-		<button>send</button>
-	</form>
+	<div id="container">
+		<ul id="messages"></ul>
+		<form id="typing-box">
+			<input class="message" type="text" id="m" autocomplete="off" autofocus>
+			<button>send</button>
+			<div><img src="images/chat-icon.png" alt="Chat baloons small icon"></div>
+		</form>
+	</div>
   <script src="/socket.io/socket.io.js"></script>
   <script src="js/main.js"></script>
 </body>

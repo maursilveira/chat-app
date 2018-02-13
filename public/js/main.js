@@ -18,28 +18,33 @@
     e.preventDefault();
     nickname = nicknameForm.querySelector('.nickname').value;
     lightbox.classList.add('nickname-selected');
-    // msg = `<li class="in-out">${nickname} has entered the chat</li>`;
     msg = `<span>${nickname}</span> has entered the chat`;
     socket.emit('connect message', msg);
-    console.log('My nickname is '+nickname);
-    socket.nickname = nickname;
-    console.log(socket);
+    // socket.nickname = nickname;
     nicknameForm.removeEventListener('submit', setNickname, false);
+    chatForm.addEventListener('change', isTyping, false);
     chatForm.addEventListener('submit', handleSendMessage, false);
   }
 
+  function isTyping(e) {
+    msg = `${nickname} is typing`;
+    socket.emit('typing message', msg);
+  }
+
+  function writeTyping(msg) {
+    let newMsg = `<li class="typing"><p>${msg.message}</p></li>`;
+    messageList.innerHTML += newMsg;
+  }
+
   function appendMessage(msg) {
-    // debugger;
-    // console.log(msg);
-    let newMsg = `<li>${msg.message}</li>`;
-    // messageList.appendChild(newMsg);
+    let newMsg = `<li><p>${msg.message}</p></li>`;
     messageList.innerHTML += newMsg;
   }
 
   function appendInOutMessage(msg) {
     console.log(msg);
     console.log('i am here');
-    let newMsg = `<li class="in-out">${msg.message}</li>`;
+    let newMsg = `<li class="in-out"><p>${msg.message}</p></li>`;
     messageList.innerHTML += newMsg;
   }
 
@@ -56,12 +61,10 @@
   function handleSendMessage(e) {
     e.preventDefault();
     nickname = (nickname && nickname.length > 0) ? nickname : 'user';
-    msg = `<span>${nickname}</span> says: ${chatMessage.value}`;
-
+    msg = `<span>${nickname}</span>: ${chatMessage.value}`;
     socket.emit('chat message', msg);
     chatMessage.value = '';
     return false;
-    // debugger;
   }
 
   window.addEventListener('load', addNicknameHandler, false);
@@ -74,5 +77,6 @@
   // socket.addEventListener('disconnect message', appendInOutMessage, false);
   // socket.addEventListener('disconnect', createDiscMessage, false);
   socket.addEventListener('disconnect message', appendInOutMessage, false);
+  socket.addEventListener('typing message', writeTyping, false);
 
 })();
