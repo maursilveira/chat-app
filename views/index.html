@@ -19,11 +19,14 @@
 	</div>
 	<div id="container">
 		<ul id="messages"></ul>
-		<form id="typing-box">
-			<input class="message" type="text" id="m" autocomplete="off" autofocus>
-			<button>send</button>
-			<div><img src="images/chat-icon.png" alt="Chat baloons small icon"></div>
-		</form>
+		<div id="type-wrapper">
+			<p class="typing"></p>
+			<form id="typing-box">
+				<input class="message" type="text" id="m" autocomplete="off" autofocus>
+				<button>send</button>
+				<div><img src="images/chat-icon.png" alt="Chat baloons small icon"></div>
+			</form>
+		</div>
 	</div>
   <script src="/socket.io/socket.io.js"></script>
   <script src="js/main.js"></script>
