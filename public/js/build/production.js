@@ -23,7 +23,7 @@
     e.preventDefault();
     nickname = nicknameForm.querySelector('.nickname').value;
     lightbox.classList.add('nickname-selected');
-    msg = `<span>${nickname}</span> has entered the chat`;
+    let msg = `<span>${nickname}</span> has entered the chat`;
     socket.emit('connect message', msg);
     nicknameForm.removeEventListener('submit', setNickname, false);
     chatMessage.addEventListener('keyup', isTyping, false);
@@ -32,10 +32,10 @@
 
   // fire on typing and send message with user's nickname
   function isTyping(e) {
-    msg = `${nickname} is typing`;
+    let msg = `${nickname} is typing`;
     socket.emit('typing message', msg);
     // set timeout to erase 'is typing' message
-    timeout = setTimeout(timeoutTyping, 2000);
+    let timeout = setTimeout(timeoutTyping, 2000);
   }
 
   // send empty message to erase 'is typing' message
@@ -88,7 +88,7 @@
       let time = new Date();
       let curTime = convertTime(time);
 
-      msg = `<span>${nickname}</span>: ${chatMessage.value}<time>${curTime}</time>`;
+      let msg = `<span>${nickname}</span>: ${chatMessage.value}<time>${curTime}</time>`;
       socket.emit('chat message', msg);
       chatMessage.value = '';
       return false;
@@ -117,7 +117,7 @@
 
   // set timeout to hide night mode button
   function timeoutNight() {
-    timeout = setTimeout(hideNightOption, 2000);
+    let timeout = setTimeout(hideNightOption, 2000);
   }
 
   // hide night mode button
@@ -135,7 +135,7 @@
     evt.preventDefault();
     let container = document.querySelector('#container');
     let bodyarea = document.querySelector('body');
-    
+
     if(evt.currentTarget.classList.contains('night-on')) {
       evt.currentTarget.classList.remove('night-on');
       container.classList.remove('night');
