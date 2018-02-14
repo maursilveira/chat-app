@@ -71,7 +71,6 @@ body {
   margin: 0 auto;
   max-width: 800px;
   min-width: 320px;
-	// overflow-y: scroll;
   background-color: rgba(255, 255, 255, 0.95);
   color: #000000;
   border-radius: 6px;
@@ -83,14 +82,28 @@ body {
     margin: 0;
     padding: 0;
     font-size: 14px;
-    overflow-y: scroll;
+    overflow: auto;
 
 		li {
 			padding: 5px 10px;
+      text-align: left;
 
       p {
+        display:inline-block;
+        max-width: 80%;
+        padding: 18px 30px;
+        border: none;
+        border-radius: 10px;
+        background-color: #f4ecb7;
+
         time {
+          display: block;
           font-style: italic;
+          font-size: 11px;
+          color: #666666;
+          text-align: right;
+          margin-top: 8px;
+          margin-right: -10px;
         }
         span {
           font-weight: bolder;
@@ -101,16 +114,16 @@ body {
 		li.in-out {
       text-align: center;
       p {
-        display:inline-block;
-        padding: 18px 30px;
-        border: none;
-        border-radius: 10px;
         background-color: #a5d9cf;
-        span {
-          font-weight: bolder;
-        }
       }
 		}
+
+    li.my-msg {
+      text-align: right;
+      p {
+        background-color: #b1ef99;
+      }
+    }
 	}
 
   #type-wrapper {
@@ -188,9 +201,22 @@ body {
   color: #ffffff;
 
   #chat-area {
+    li {
+      p {
+        background-color: #706205;
+        time {
+          color: #dedede;
+        }
+      }
+    }
     li.in-out {
       p {
         background-color: #315d7c;
+      }
+    }
+    li.my-msg {
+      p {
+        background-color: #174106;
       }
     }
   }

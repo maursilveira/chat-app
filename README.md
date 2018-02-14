@@ -5,6 +5,7 @@ This is a chat app built using Socket.io and to run in NodeJS.
 ## Features
 * Lightbox on load to set nickname  
 * Different message when a user enters or leaves the chat  
+* Different message layout when it is an own user's message or other user's message  
 * Display message time  
 * Display "<username> is typing" functionality  
 * Auto scroll down of chat container  
@@ -43,6 +44,9 @@ This project is built to run in NodeJS, therefore it is necessary to execute thi
 ```
 npm start
 ```
+
+## Author
+* [**Mauricio M. Silveira**](https://github.com/maursilveira)  
 
 ## License
 

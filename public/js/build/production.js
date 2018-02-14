@@ -45,12 +45,29 @@
 
   // write 'is typing' message on screen
   function writeTyping(msg) {
-    typingMessage.innerHTML = msg.message;
+    let myId = socket.id;
+    let msgId = msg.id;
+
+    // check if message is not from the own user
+    if (socket.id != msg.id) {
+      typingMessage.innerHTML = msg.message;
+    }
   }
 
   // append chat messages
   function appendMessage(msg) {
-    let newMsg = `<li><p>${msg.message}</p></li>`;
+    let myId = socket.id;
+    let msgId = msg.id;
+    let newMsg;
+
+    // check if user is the sender of the message
+    if(socket.id === msg.id) {
+      newMsg = `<li class="my-msg"><p>${msg.message}</p></li>`;
+    }
+    else {
+      newMsg = `<li><p>${msg.message}</p></li>`;
+    }
+
     messageList.innerHTML += newMsg;
     messageList.scrollTop = messageList.scrollHeight;
   }
@@ -70,7 +87,8 @@
       nickname = (nickname && nickname.length > 0) ? nickname : 'user';
       let time = new Date();
       let curTime = convertTime(time);
-      msg = `<time>(${curTime})</time> <span>${nickname}</span>: ${chatMessage.value}`;
+
+      msg = `<span>${nickname}</span>: ${chatMessage.value}<time>${curTime}</time>`;
       socket.emit('chat message', msg);
       chatMessage.value = '';
       return false;
@@ -117,6 +135,7 @@
     evt.preventDefault();
     let container = document.querySelector('#container');
     let bodyarea = document.querySelector('body');
+    
     if(evt.currentTarget.classList.contains('night-on')) {
       evt.currentTarget.classList.remove('night-on');
       container.classList.remove('night');

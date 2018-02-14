@@ -16,7 +16,7 @@ const server = app.listen(3000, () => {
 
 io.attach(server);
 
-io.on('connection', socket => { // same as function(socket) {...}
+io.on('connection', socket => {
   console.log('a user has connected');
 
   socket.on('connect message', msg => {
@@ -24,11 +24,11 @@ io.on('connection', socket => { // same as function(socket) {...}
   });
 
   socket.on('chat message', msg => {
-    io.emit('chat message', {for: 'everyone', message: msg});
+    io.emit('chat message', {for: 'everyone', message: msg, id: socket.id});
   });
 
   socket.on('typing message', msg => {
-    io.emit('typing message', {for: 'everyone', message: msg});
+    io.emit('typing message', {for: 'everyone', message: msg, id: socket.id});
   });
 
   socket.on('disconnect', () => {
