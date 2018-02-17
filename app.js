@@ -16,9 +16,11 @@ io.attach(server);
 
 io.on('connection', socket => {
   console.log('a user has connected');
+  var nickname;
 
-  socket.on('connect message', msg => {
-    io.emit('connect message', {for: 'everyone', message: msg});
+  socket.on('connect message', data => {
+    nickname = data.nick;
+    io.emit('connect message', {for: 'everyone', message: data.msg});
   });
 
   socket.on('chat message', msg => {
@@ -31,6 +33,6 @@ io.on('connection', socket => {
 
   socket.on('disconnect', () => {
     console.log('a user disconnected');
-    io.emit('disconnect message', {for: 'everyone', message: `<span>${socket.id}</span> has left the chat`});
+    io.emit('disconnect message', {for: 'everyone', message: `<span>${nickname}</span> has left the chat`});
   });
 });
