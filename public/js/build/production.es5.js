@@ -26,7 +26,8 @@
     nickname = nicknameForm.querySelector('.nickname').value;
     lightbox.classList.add('nickname-selected');
     var msg = '<span>' + nickname + '</span> has entered the chat';
-    socket.emit('connect message', msg);
+    // socket.emit('connect message', msg);
+    socket.emit('connect message', { msg: msg, nick: nickname });
     nicknameForm.removeEventListener('submit', setNickname, false);
     chatMessage.addEventListener('keyup', isTyping, false);
     chatForm.addEventListener('submit', handleSendMessage, false);
